@@ -1,0 +1,42 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+
+<div class="card" *ngIf="!isEditing">
+<h2 class="page-header">Adicionar filme</h2>
+<div class="container" >
+<form  [formGroup]="addFilmeForm" (ngSubmit)="addFilme()" role="form" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-1" for="inputEmail1">Nome do filme</label>
+        <div class="col-sm-5"><input type="text" [(ngModel)]="filme.title" name="title" class="form-control" formControlName="title" ></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1" for="inputPassword1">Categoria</label>
+        <div class="col-sm-5"><input type="text" [(ngModel)]="filme.categoria" name="categoria" class="form-control" formControlName="categoria"></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-12" for="TextArea">Descricao</label>
+        <div class="col-sm-6"><textarea class="form-control" [(ngModel)]="filme.descricao" name="descricao" formControlName="descricao" ></textarea></div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3"><label>Avaliação</label><input class="form-control" type="number" name="avaliacao" [(ngModel)]="filme.avaliacao" placeholder="Avaliacao" step="any" min="0" formControlName="avaliacao" ></div>
+        <div class="col-sm-3"><label>Trailer</label><input type="text" [(ngModel)]="filme.trailer" name="trailer" class="form-control" formControlName="trailer" ></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-12">Cenas</label>
+        <div class="col-sm-2"><input type="text" [(ngModel)]="filme.cena1" name="cena1" class="form-control" formControlName="cena1" ><div class="help">cena1</div></div>
+        <div class="col-sm-2"><input type="text" [(ngModel)]="filme.cena2" name="cena2" class="form-control" formControlName="cena2" ><div class="help">cena2</div></div>
+        <div class="col-sm-2"><input type="text" [(ngModel)]="filme.cena3" name="cena3" class="form-control" formControlName="cena3" ><div class="help">cena3</div></div>
+        <div class="col-sm-2"><input type="text" [(ngModel)]="filme.thumbnail" name="thumbnail" class="form-control" formControlName="thumbnail" ><div class="help">thumbnail</div></div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+            <button type="submit" class="btn btn-info pull-right" [disabled]="!addFilmeForm.valid" ><i class="fa fa-floppy-o"></i>Salvar</button>
+        </div>
+    </div>
+</form>
+<hr>
+</div>
+</div>
+

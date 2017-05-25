@@ -1,0 +1,23 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="container">
+	<div class="card" *ngIf="!isLoading" >
+		<h4 class="card-header">Ação e Aventura</h4>
+		<div *ngFor="let filme of filmes" (submit)="onSubmit()">
+		  <div *ngIf="filme.categoria === 'teste' " class="col-md-3" ><a type="submit" routerLink="/tela" class="nav-item nav-link" routerLinkActive="active"><img src="{{filme.cena1}}" class="img-thumbnail" width="300px" height="300px" /></a></div>
+	    </div>
+	    <h4 class="card-header">Comédia</h4>
+	    <div *ngFor="let filme of filmes" (submit)="onSubmit()">
+		  <div *ngIf="filme.categoria === 'Gato' " class="col-md-3" ><a type="submit" routerLink="/tela" class="nav-item nav-link" routerLinkActive="active" ><img src="{{filme.cena1}}" class="img-thumbnail" width="300px" height="300px" /></a></div>
+	    </div>
+	    <h4 class="card-header">Suspense</h4>
+	    <div *ngFor="let filme of filmes" (submit)="onSubmit()">
+		  <div *ngIf="filme.categoria === 'Gato2' " class="col-md-3" ><a type="submit" routerLink="/tela" class="nav-item nav-link" routerLinkActive="active"><img src="{{filme.cena1}}" class="img-thumbnail" width="300px" height="300px" /></a></div>
+	    </div>
+	</div>
+</div>
+
+
+

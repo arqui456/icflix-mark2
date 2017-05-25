@@ -1,0 +1,55 @@
+
+<nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">ICFLIX</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li *ngIf="!auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/">Home</a></li>
+            <li *ngIf="auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}" class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/">Ação e Aventura</a></li>
+                  <li><a routerLink="/">Suspense</a></li>
+                  <li><a routerLink="/">Comédia</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Sobre</a></li>
+                </ul>
+            </li>
+            <li *ngIf="auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/principal">Principal</a></li>
+          </ul>
+
+           <ul class="nav navbar-nav navbar-right">
+           <li *ngIf="auth.loggedIn" href="#" class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gerenciador<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li routerLinkActive="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/add">Lista de filmes</a></li>
+                  <li><a routerLink = "/addCat">Adicionar categoria</a></li>
+                  <li><a routerLink = "/filmes">Adicionar filme</a></li>
+                  <li *ngIf="auth.loggedIn && auth.isAdmin" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/admin">Admin</a></li>
+                </ul>
+            </li>
+           <li *ngIf="auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/account">Perfil({{auth.currentUser.username}})</a></li>
+           <li *ngIf="!auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/login">Login</a></li>
+           <li *ngIf="!auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/register">Cadastrar</a></li>
+            <form *ngIf="auth.loggedIn" class="navbar-form navbar-left">
+               <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+               </div>
+                  <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+              <li *ngIf="auth.loggedIn"><a routerLink="/logout" routerLinkActive="active" *ngIf="auth.loggedIn">Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+      <router-outlet></router-outlet>
+
+
+
+
+
+  
+
+

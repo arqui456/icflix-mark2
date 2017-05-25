@@ -1,0 +1,84 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card" *ngIf="!isLoading && !isEditing " >
+  <h4 class="card-header">Lista de filmes ({{filmes.length}})</h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th>Titulo</th>
+          <th>Categoria</th>
+          <th>Avaliação</th>
+          <th>Cena1</th>
+          <th>Cena2</th>
+          <th>Cena3</th>
+          <th>Descrição</th>
+          <th>Trailer</th>
+          <th>thumbnail</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="filmes.length === 0">
+        <tr>
+          <td colspan="4">Não há filmes no DB. Addicione um novo filme abaixo.</td>
+        </tr>  
+      </tbody>
+      <tbody class="mytable" *ngIf="!isEditing">
+        <tr *ngFor="let filme of filmes">
+          <td>{{filme.title}}</td>
+          <td>{{filme.categoria}}</td>
+          <td>{{filme.avaliacao}}</td>
+          <td>{{filme.cena1}}</td>
+          <td>{{filme.cena2}}</td>
+          <td>{{filme.cena3}}</td>
+          <td>{{filme.descricao}}</td>
+          <td>{{filme.trailer}}</td>
+          <td>{{filme.thumbnail}}</td>  
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="enableEditing(filme)"><i class="fa fa-pencil"></i> Editar</button> <button class="btn btn-sm btn-danger" (click)="deleteFilme(filme)"><i class="fa fa-trash"></i> Deletar</button>
+          </td>
+        </tr>  
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card" *ngIf="isEditing">
+<h2 class="page-header">Editar filme</h2>
+<div class="container" >
+<form  [formGroup]="addFilmeForm" (ngSubmit)="editFilme(filme)" role="form" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-1" for="inputEmail1">Nome do filme</label>
+        <div class="col-sm-5"><input type="text" [(ngModel)]="filme.title" name="title" class="form-control" formControlName="title" ></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-1" for="inputPassword1">Categoria</label>
+        <div class="col-sm-5"><input type="text" [(ngModel)]="filme.categoria" name="categoria" class="form-control" formControlName="categoria"></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-12" for="TextArea">Descricao</label>
+        <div class="col-sm-6"><textarea class="form-control" [(ngModel)]="filme.descricao" name="descricao" formControlName="descricao" ></textarea></div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3"><label>Avaliação</label><input class="form-control" type="number" name="avaliacao" [(ngModel)]="filme.avaliacao" placeholder="Avaliacao" step="any" min="0" formControlName="avaliacao" ></div>
+        <div class="col-sm-3"><label>Trailer</label><input type="text" [(ngModel)]="filme.trailer" name="trailer" class="form-control" formControlName="trailer" ></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-12">Cenas</label>
+        <div class="col-sm-2"><input type="text" [(ngModel)]="filme.cena1" name="cena1" class="form-control" formControlName="cena1" ><div class="help">cena1</div></div>
+        <div class="col-sm-2"><input type="text" [(ngModel)]="filme.cena2" name="cena2" class="form-control" formControlName="cena2" ><div class="help">cena2</div></div>
+        <div class="col-sm-2"><input type="text" [(ngModel)]="filme.cena3" name="cena3" class="form-control" formControlName="cena3" ><div class="help">cena3</div></div>
+        <div class="col-sm-2"><input type="text" [(ngModel)]="filme.thumbnail" name="thumbnail" class="form-control" formControlName="thumbnail" ><div class="help">thumbnail</div></div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6">
+            <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Salvar</button>
+            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancelar</button>
+        </div>
+    </div>
+</form>
+<hr>
+</div>
+</div>
