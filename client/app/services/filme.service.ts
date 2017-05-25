@@ -36,4 +36,28 @@ export class FilmeService {
     return this.http.delete(`/api/filme/${filme._id}`, this.options);
   }
 
+  getCategorias(): Observable<any> {
+    return this.http.get('/api/categorias').map(res => res.json());
+  }
+
+  countCategoria(): Observable<any> {
+    return this.http.get('/api/categorias/count').map(res => res.json());
+  }
+
+  addCategoria(categoria): Observable<any> {
+    return this.http.post('/api/categoria', JSON.stringify(categoria), this.options);
+  }
+
+  getCategoria(categoria): Observable<any> {
+    return this.http.get(`/api/categoria/${categoria._id}`).map(res => res.json());
+  }
+
+  editCategoria(categoria): Observable<any> {
+    return this.http.put(`/api/categoria/${categoria._id}`, JSON.stringify(categoria), this.options);
+  }
+
+  deleteCategoria(categoria): Observable<any> {
+    return this.http.delete(`/api/categoria/${categoria._id}`, this.options);
+  }
+
 }

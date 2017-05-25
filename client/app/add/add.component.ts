@@ -63,7 +63,7 @@ export class AddComponent implements OnInit {
         const newFilme = res.json();
         this.filmes.push(newFilme);
         this.addFilmeForm.reset();
-        this.toast.setMessage('item added successfully.', 'success');
+        this.toast.setMessage('Filme addicionado com sucesso!', 'success');
       },
       error => console.log(error)
     );
@@ -77,7 +77,7 @@ export class AddComponent implements OnInit {
   cancelEditing() {
     this.isEditing = false;
     this.filme = {};
-    this.toast.setMessage('item editing cancelled.', 'warning');
+    this.toast.setMessage('Edição de filme cancelada!', 'warning');
     // reload the filmes to reset the editing
     this.getFilmes();
   }
@@ -87,19 +87,19 @@ export class AddComponent implements OnInit {
       res => {
         this.isEditing = false;
         this.filme = filme;
-        this.toast.setMessage('item edited successfully.', 'success');
+        this.toast.setMessage('Filme editado com sucesso!', 'success');
       },
       error => console.log(error)
     );
   }
 
   deleteFilme(filme) {
-    if (window.confirm('Are you sure you want to permanently delete this item?')) {
+    if (window.confirm('Você tem certeza que quer excluir esse filme permanentemente?')) {
       this.filmeService.deleteFilme(filme).subscribe(
         res => {
           const pos = this.filmes.map(elem => { return elem._id; }).indexOf(filme._id);
           this.filmes.splice(pos, 1);
-          this.toast.setMessage('item deleted successfully.', 'success');
+          this.toast.setMessage('Filme deletado com sucesso!', 'success');
         },
         error => console.log(error)
       );

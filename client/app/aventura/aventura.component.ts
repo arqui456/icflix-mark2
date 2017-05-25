@@ -6,32 +6,32 @@ import { FilmeService } from '../services/filme.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
-  selector: 'app-tela',
-  templateUrl: './tela.component.html',
-  styleUrls: ['./tela.component.scss']
+  selector: 'app-aventura',
+  templateUrl: './aventura.component.html',
+  styleUrls: ['./aventura.component.scss']
 })
-export class TelaComponent implements OnInit {
+export class AventuraComponent implements OnInit {
 	filme = {};
   	filmes = [];
   	isLoading = true;
+    isEditing = false;
 
 
-  	addFilmeForm: FormGroup;
+    addFilmeForm: FormGroup;
   	title = new FormControl('', Validators.required);
   	categoria = new FormControl('', Validators.required);
- 	  avaliacao = new FormControl('', Validators.required);
+  	avaliacao = new FormControl('', Validators.required);
   	cena1 = new FormControl('', Validators.required);
  	  cena2 = new FormControl('', Validators.required);
  	  cena3 = new FormControl('', Validators.required);
  	  descricao = new FormControl('', Validators.required);
-  	trailer = new FormControl('', Validators.required);
+ 	  trailer = new FormControl('', Validators.required);
 
   constructor(
-  	private filmeService: FilmeService,
+    private filmeService: FilmeService,
     private formBuilder: FormBuilder, 
     private http: Http,
-    public toast: ToastComponent
-  ) { }
+    public toast: ToastComponent) { }
 
   ngOnInit() {
     this.getFilmes();
@@ -47,6 +47,15 @@ export class TelaComponent implements OnInit {
     });
   }
 
+  onSubmit(){
+    const filmeAtual = this.title 
+  }
+
+  enableEditing(filme) {
+    this.isEditing = true;
+    this.filme = filme;
+  }
+
   getFilmes() {
     this.filmeService.getFilmes().subscribe(
       data => this.filmes = data,
@@ -54,6 +63,5 @@ export class TelaComponent implements OnInit {
       () => this.isLoading = false
     );
   }
-
 
 }

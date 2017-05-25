@@ -3,14 +3,6 @@
 <app-toast [message]="toast.message"></app-toast>
 
 <div class="container" *ngIf="!isLoading && !isEditing" >
-	<div class="card">
-		<h4 class="card-header">Ação e Aventura</h4>
-		<div class="card-block">
-		<div *ngFor="let filme of filmes" >
-		  <div *ngIf="filme.categoria === 'Ação e Aventura'" class="col-md-4" ><img src="{{filme.thumbnail}}" (click)="enableEditing(filme)" style="cursor:pointer" class="img-thumbnail" width="300px" height="300px" /></div>
-	    </div>
-	    </div>
-	    </div>
 	    <div class="card">
 	    <h4 class="card-header">Comédia</h4>
 	    <div class="card-block">
@@ -19,15 +11,6 @@
 	    </div>
 	    </div>
 	    </div>
-	    <div class="card">
-	    <h4 class="card-header">Suspense</h4>
-	    <div class="card-block">
-	    <div *ngFor="let filme of filmes" >
-		  <div *ngIf="filme.categoria === 'Suspense' " class="col-md-4" ><a (click)="enableEditing(filme)" ><img src="{{filme.thumbnail}}"  class="img-thumbnail" style="cursor:pointer" width="300px" height="300px" /></a></div>
-	    </div>
-	    </div>
-	    </div>
-	
 	</div>
 
 	<div class="container" *ngIf="isEditing">
@@ -47,8 +30,3 @@
 		   <iframe class="video" src="{{filme.trailer}}" width="520" height="415" frameborder="0" allowfullscreen></iframe>
 		   
 	</div>
-
-
-
-
-

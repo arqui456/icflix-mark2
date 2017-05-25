@@ -4,6 +4,7 @@ import { JwtHelper } from 'angular2-jwt';
 
 import { UserService } from '../services/user.service';
 
+
 @Injectable()
 export class AuthService {
   loggedIn = false;

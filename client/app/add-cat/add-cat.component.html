@@ -1,13 +1,13 @@
 <h2 class="page-header">Adicionar Categoria</h2>
 <div class="container">
-<form (submit)="onRegisterSubmit()" role="form" class="form-horizontal">
+<form  role="form" class="form-horizontal">
     <div class="form-group">
         <label class="col-sm-1" for="inputEmail1">Nova Categoria</label>
-        <div class="col-sm-5"><input type="text" [(ngModel)]="categoria" name="categoria" class="form-control"></div>
+        <div class="col-sm-5"><input type="text"  name="nome" class="form-control"></div>
     </div>
     <div class="checkbox">
     	<label>
-     		<input type="checkbox" name="paginaInicial" [(ngModel)]="paginaInicial"> Exibir categoria na Tela Principal?
+     		<input type="checkbox" name="paginaInicial" > Exibir categoria na Tela Principal?
     	</label>
   	</div>
     <div class="form-group">

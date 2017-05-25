@@ -17,10 +17,12 @@ import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { PrincipalComponent } from './principal/principal.component';
-import { TelaComponent } from './tela/tela.component';
 import { AddComponent } from './add/add.component';
 import { AddCatComponent } from './add-cat/add-cat.component';
 import { CategoriaService } from './services/categoria.service';
+import { AcaoComponent } from './acao/acao.component';
+import { AventuraComponent } from './aventura/aventura.component';
+import { SuspenseComponent } from './suspense/suspense.component';
 
 
 @NgModule({
@@ -34,9 +36,11 @@ import { CategoriaService } from './services/categoria.service';
     AccountComponent,
     AdminComponent,
     PrincipalComponent,
-    TelaComponent,
     AddComponent,
-    AddCatComponent
+    AddCatComponent,
+    AcaoComponent,
+    AventuraComponent,
+    SuspenseComponent
   ],
   imports: [
     RoutingModule,
@@ -50,7 +54,7 @@ import { CategoriaService } from './services/categoria.service';
     AuthGuardAdmin,
     FilmeService,
     UserService,
-    
+    CategoriaService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

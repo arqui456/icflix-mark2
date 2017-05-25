@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default ">
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">ICFLIX</a>
@@ -10,9 +10,9 @@
             <li *ngIf="auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}" class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a routerLink="/">Ação e Aventura</a></li>
-                  <li><a routerLink="/">Suspense</a></li>
-                  <li><a routerLink="/">Comédia</a></li>
+                  <li><a routerLink="/acao">Ação e Aventura</a></li>
+                  <li><a routerLink="/suspense">Suspense</a></li>
+                  <li><a routerLink="/aventura">Comédia</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="#">Sobre</a></li>
                 </ul>
@@ -33,12 +33,10 @@
            <li *ngIf="auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/account">Perfil({{auth.currentUser.username}})</a></li>
            <li *ngIf="!auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/login">Login</a></li>
            <li *ngIf="!auth.loggedIn" routerLinkActive="active" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/register">Cadastrar</a></li>
-            <form *ngIf="auth.loggedIn" class="navbar-form navbar-left">
-               <div class="form-group">
+                <form *ngIf="auth.loggedIn" class="navbar-form navbar-right">
                   <input type="text" class="form-control" placeholder="Search">
-               </div>
                   <button type="submit" class="btn btn-default">Submit</button>
-              </form>
+                    </form>
               <li *ngIf="auth.loggedIn"><a routerLink="/logout" routerLinkActive="active" *ngIf="auth.loggedIn">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
