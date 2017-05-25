@@ -14,7 +14,7 @@ export class PrincipalComponent implements OnInit {
 	  filme = {};
   	filmes = [];
   	isLoading = true;
-    filmeAtual: String; 
+    isEditing = false;
 
   	addFilmeForm: FormGroup;
   	title = new FormControl('', Validators.required);
@@ -50,6 +50,15 @@ export class PrincipalComponent implements OnInit {
   onSubmit(){
     const filmeAtual = this.title 
   }
+
+  enableEditing(filme) {
+    this.isEditing = true;
+    this.filme = filme;
+  }
+
+  trackByFn(index, filme) {
+  return filme.id;
+}
 
   
 

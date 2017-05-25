@@ -2,22 +2,44 @@
 
 <app-toast [message]="toast.message"></app-toast>
 
-<div class="container">
-	<div class="card" *ngIf="!isLoading" >
+<div class="container" *ngIf="!isLoading && !isEditing" >
+	<div class="card">
 		<h4 class="card-header">Ação e Aventura</h4>
-		<div *ngFor="let filme of filmes" (submit)="onSubmit()">
-		  <div *ngIf="filme.categoria === 'teste' " class="col-md-3" ><a type="submit" routerLink="/tela" class="nav-item nav-link" routerLinkActive="active"><img src="{{filme.cena1}}" class="img-thumbnail" width="300px" height="300px" /></a></div>
+		<div class="card-block">
+		<div *ngFor="let filme of filmes" >
+		  <div *ngIf="filme.categoria === 'Ação e Aventura'" class="col-md-4" ><img src="{{filme.thumbnail}}" (click)="enableEditing(filme)" style="cursor:pointer" class="img-thumbnail" width="300px" height="300px" /></div>
 	    </div>
+	    </div>
+	    </div>
+	    <div class="card">
 	    <h4 class="card-header">Comédia</h4>
-	    <div *ngFor="let filme of filmes" (submit)="onSubmit()">
-		  <div *ngIf="filme.categoria === 'Gato' " class="col-md-3" ><a type="submit" routerLink="/tela" class="nav-item nav-link" routerLinkActive="active" ><img src="{{filme.cena1}}" class="img-thumbnail" width="300px" height="300px" /></a></div>
+	    <div class="card-block">
+	    <div *ngFor="let filme of filmes" >
+		  <div *ngIf="filme.categoria === 'Comédia' " class="col-md-4" ><img src="{{filme.thumbnail}}" (click)="enableEditing(filme)" class="img-thumbnail" style="cursor:pointer" width="300px" height="300px" /></div>
 	    </div>
+	    </div>
+	    </div>
+	    <div class="card">
 	    <h4 class="card-header">Suspense</h4>
-	    <div *ngFor="let filme of filmes" (submit)="onSubmit()">
-		  <div *ngIf="filme.categoria === 'Gato2' " class="col-md-3" ><a type="submit" routerLink="/tela" class="nav-item nav-link" routerLinkActive="active"><img src="{{filme.cena1}}" class="img-thumbnail" width="300px" height="300px" /></a></div>
+	    <div class="card-block">
+	    <div *ngFor="let filme of filmes" >
+		  <div *ngIf="filme.categoria === 'Suspense' " class="col-md-4" ><a (click)="enableEditing(filme)" ><img src="{{filme.thumbnail}}"  class="img-thumbnail" style="cursor:pointer" width="300px" height="300px" /></a></div>
 	    </div>
+	    </div>
+	    </div>
+	
 	</div>
-</div>
+
+	<div class="container" *ngIf="isEditing">
+	<h2>{{filme.title}}</h2>
+		{{filme.cena1}}
+		{{filme.cena2}}
+		{{filme.cena3}}
+		{{filme.descricao}}
+		{{filme.trailer}}
+	</div>
+
+
 
 
 
