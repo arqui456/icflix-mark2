@@ -45,6 +45,33 @@
 		  <p id="desc">{{filme.descricao}}</p>
 		</div>
 		   <iframe class="video" src="{{filme.trailer}}" width="520" height="415" frameborder="0" allowfullscreen></iframe>
+
+		   <div class="card" id="man">	
+		   <div class="card-header" id="KK"><h2>Recomendações</h2></div>
+		   <div class="card-block">
+		   <div *ngIf="filme.categoria === 'Ação e Aventura'">
+		   <div id="help" *ngFor="let filme of filmes" >
+		  <div *ngIf="filme.categoria === 'Ação e Aventura'" class="col-md-4" >
+		  <img id="rec" src="{{filme.thumbnail}}" (click)="enableEditing(filme)" style="cursor:pointer" class="img-thumbnail" width="300px" height="300px" />
+		  </div>
+		  </div>
+		  </div>
+		   <div *ngIf="filme.categoria === 'Suspense'">
+		   <div id="help" *ngFor="let filme of filmes" >
+		  <div *ngIf="filme.categoria === 'Suspense'" class="col-md-4" >
+		  <img id="rec" src="{{filme.thumbnail}}" (click)="enableEditing(filme)" style="cursor:pointer" class="img-thumbnail" width="300px" height="300px" />
+		  </div>
+		  </div>
+		  </div>
+		   <div *ngIf="filme.categoria === 'Comédia'">
+		   <div id="help" *ngFor="let filme of filmes" >
+		  <div *ngIf="filme.categoria === 'Comédia'" class="col-md-4" >
+		  <img id="rec" src="{{filme.thumbnail}}" (click)="enableEditing(filme)" style="cursor:pointer" class="img-thumbnail" width="300px" height="300px" />
+		  </div>
+		  </div>
+		  </div>
+	    </div>
+	    </div>
 		   
 	</div>
 
